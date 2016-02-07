@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import com.inertialize.Sortable;
 
+// Multi-threaded sort-merge.
 public class JavaParallelSort extends Sortable {
 
 	@Override
