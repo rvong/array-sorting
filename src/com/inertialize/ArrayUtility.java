@@ -9,6 +9,15 @@ public class ArrayUtility {
 		return min + r.nextInt(1 + max - min);
 	}
 	
+	public static void insertionSort(int[] a) {
+		for (int i = 1; i < a.length; i++) {
+			int j, temp = a[i];
+			for (j = i; j > 0 && temp < a[j - 1]; j--)
+				a[j] = a[j - 1];
+			a[j] = temp;
+		}
+	}
+	
 	public static void swapElements(int[] a, int i1, int i2) {
 		final int temp = a[i1];
 		a[i1] = a[i2];

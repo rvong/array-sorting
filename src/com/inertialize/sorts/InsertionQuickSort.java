@@ -2,6 +2,9 @@ package com.inertialize.sorts;
 
 import com.inertialize.Sortable;
 
+// Simple modification of QuickSort.
+// Utilize Insertion sort for partitions of size n <= 10.
+// Insertion sort has constant factor. Faster for very small collections.
 public class InsertionQuickSort extends Sortable {
 
 	@Override

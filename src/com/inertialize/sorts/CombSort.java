@@ -2,6 +2,9 @@ package com.inertialize.sorts;
 
 import com.inertialize.Sortable;
 
+/* Eliminate Turtles like Shaker/Cocktail sort
+ * 
+ */
 public class CombSort extends Sortable {
 
 	@Override

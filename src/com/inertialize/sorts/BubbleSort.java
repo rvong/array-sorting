@@ -2,6 +2,10 @@ package com.inertialize.sorts;
 
 import com.inertialize.Sortable;
 
+// Bubble sort swaps element i with subsequent element i+1 if i > i+1 until the array is sorted.
+// The largest element "bubbles" to the end of the array. Reduce search limit k by 1 each iteration since
+// it's known that the highest element is in the correct position after each iteration.
+// Worst case is O(n^2). Best case is O(n) by exiting the subroutine if no swaps are made.
 public class BubbleSort extends Sortable {
 
 	@Override

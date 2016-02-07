@@ -4,7 +4,33 @@ import java.text.DecimalFormat;
 import java.util.Arrays;
 
 import com.inertialize.Sortable;
+// O(log n)
+// Merge Sort uses a Merge function which takes as input
+// two sorted collections and returns the combined sorted collection.
+// The Merge step takes O(n + m) time.
+// Two sorted collection can be easily combined into a single sorted collection in linear time.
+// Notice that a collection of size 1 is sorted.
+// So partition the array of size n into n partitions size of 1.
+// Recursively merge these sorted partitions into a single sorted collection.
 
+// [10,9,8,7,6,5,4,3,2,1]        				       (Unsorted collection)
+// [10,9,8,7,6]		[5,4,3,2,1] 				  	   (Partition)
+// [10,9]	[8,7,6]	  [5,4]	 [3,2,1] 			  	   (Partition)
+// [10]	  [9]	[8]	  [7,6]	 [5]  [4]  [3]	[2,1] 	   (Partition)
+
+// Here, [10] [9] [8] etc. are sorted, so they can be merged with another sorted array.
+// Other partitions such as [7,6] and [2,1] still need to be partitioned
+// into a partition of size 1 which is sorted.
+
+// [9,10]	[8]   [7]	[6]	  [4,5]	   [3]	 [2]   [1] (Merge, Partition)
+// [8,9,10] 	[6,7] 	[3,4,5] 	[1,2] 			   (Merge)
+// [6,7,8,9,10] 	[1,2,3,4,5] 					   (Merge)
+// [1,2,3,4,5,6,7,8,9,10] 							   (Merge complete, the collected is sorted.)
+
+// Could possibly change "partition of size 1" is sorted base case into
+// a case where if partition is size <= 20, do insertion sort on the partitions, and merge.
+// This should be faster because of the smaller constant factor,
+// that is, O(n^2) < O(n log n) for sufficiently small n.
 public class MergeSort extends Sortable {
 
 	@Override

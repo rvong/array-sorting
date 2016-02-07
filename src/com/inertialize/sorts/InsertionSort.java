@@ -2,6 +2,11 @@ package com.inertialize.sorts;
 
 import com.inertialize.Sortable;
 
+// Worst case O(n^2), best case O(n) exit.
+// Insertions sort smaller partitions
+// Example: Given a stack of cards, pick and insert into a separate stack,
+// pick next card in stack and insert in sorted order, pick next and place
+// in sorted order, continue until stack of cards is empty.
 public class InsertionSort extends Sortable {
 
 	@Override

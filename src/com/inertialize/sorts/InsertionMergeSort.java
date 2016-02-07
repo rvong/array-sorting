@@ -3,9 +3,12 @@ package com.inertialize.sorts;
 import java.text.DecimalFormat;
 import java.util.Arrays;
 
-import com.inertialize.ArraySorter;
+import com.inertialize.ArrayUtility;
 import com.inertialize.Sortable;
 
+/*
+ * Use Insertion sort for small arrays.
+ */
 public class InsertionMergeSort extends Sortable {
 
 	@Override
@@ -15,7 +18,7 @@ public class InsertionMergeSort extends Sortable {
 	
 	public int[] insMergeSort(int[] a) {
 		if (a.length <= 100) {
-			ArraySorter.insertionSort(a);
+			ArrayUtility.insertionSort(a);
 			return a;
 		}
 		int mid = a.length / 2;

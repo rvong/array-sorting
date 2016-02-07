@@ -2,6 +2,8 @@ package com.inertialize.sorts;
 
 import com.inertialize.Sortable;
 
+// bubble sort in both directions. (bubble to end. bubble to beginning)
+// solves Turtle and Rabbit problem.
 public class ShakerSort extends Sortable {
 
 	@Override

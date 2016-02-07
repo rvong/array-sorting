@@ -2,6 +2,11 @@ package com.inertialize.sorts;
 
 import com.inertialize.Sortable;
 
+// Insertion sort with variable step size.
+// Elements far away from in-order index reach sorted index faster by skipping positions.
+// As opposed to moving 1 position at a time.
+// Step/Gap size is h
+// Shell's 2.2 factor alternatively Knuth's 3x+1 sequence.
 public class ShellSort extends Sortable {
 
 	@Override
