@@ -65,18 +65,30 @@ public abstract class Sortable {
 		return true;
 	}
 	
+	protected boolean matchSorted(int[] sortedTestArray) {
+		// Run this test after sorting a[]
+		if (a.length != sortedTestArray.length) return false;
+
+		for (int i = 0; i < a.length; i++) {
+			if (a[i] != sortedTestArray[i]) return false;
+		}
+		return true;
+	}
+	
 	public void printIsSorted() {
 		System.out.println(isSorted() ? "Array is Sorted" : "Array is Not Sorted");
 	}
 	
-	public void test() {
+	public void test(int[] sortedTestArray) {
 		long time = System.nanoTime();
 		this.sort();
 		double elapsedMs = (double)((System.nanoTime() - time) / 1000000.0);
-		
-		System.out.println("Sorting Algorithm: " + String.format("%-20s", this.getClass().getSimpleName())
+
+		System.out.println(
+				"Sorting Algorithm: " + String.format("%-20s", this.getClass().getSimpleName())
 				+ "\t Num. Elements: " + a.length 
 				+ "\t Sorted: " + (isSorted() ? "Yes" : "No")
+				+ "\t Match Sorted Array: " + (matchSorted(sortedTestArray) ? "Yes" : "No")
 				+ "\t Elapsed Time: " + (new DecimalFormat("0.00##").format(elapsedMs)) + " ms");
 	}
 }

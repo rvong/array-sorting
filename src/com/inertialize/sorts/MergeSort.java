@@ -62,14 +62,16 @@ public class MergeSort extends Sortable {
 	}
 
 	@Override
-	public void test() {
+	public void test(int[] sortedTestArray) {
 		long time = System.nanoTime();
 		a = this.mergeSort(a);
 		double elapsedMs = (double)((System.nanoTime() - time) / 1000000.0);
 		
-		System.out.println("Sorting Algorithm: " + String.format("%-20s", this.getClass().getSimpleName())
+		System.out.println(
+				"Sorting Algorithm: " + String.format("%-20s", this.getClass().getSimpleName())
 				+ "\t Num. Elements: " + a.length 
 				+ "\t Sorted: " + (isSorted() ? "Yes" : "No")
+				+ "\t Match Sorted Array: " + (matchSorted(sortedTestArray) ? "Yes" : "No")
 				+ "\t Elapsed Time: " + (new DecimalFormat("0.00##").format(elapsedMs)) + " ms");
 	}
 }

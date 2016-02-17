@@ -8,10 +8,10 @@ import com.inertialize.sorts.*;
 public class Main {
 	private static final int SMALL = 5000, LARGE = 5000000;
 	
-	private static void testSort(List<Sortable> sorts, int[] testArray) {
+	private static void testSort(List<Sortable> sorts, int[] testArray, int[] sortedTestArray) {
 		for (Sortable sort : sorts) {
 			sort.copy(testArray);
-			sort.test();
+			sort.test(sortedTestArray);
 		}
 	}
 	
@@ -32,21 +32,32 @@ public class Main {
 		Sortable insMergeSort = new InsertionMergeSort();
 		Sortable quickSort = new QuickSort();
 		Sortable insQuickSort = new InsertionQuickSort();
+		
+		Sortable countingSort = new CountingSort();
+		
 		Sortable javaSort = new JavaSort();
 		Sortable javaParallelSort = new JavaParallelSort();
 		
-		List<Sortable> sorts = Arrays.asList(selectionSort, bubbleSort, shakerSort, combSort, insertionSort, shellSort, mergeSort, insMergeSort, quickSort, insQuickSort, javaSort, javaParallelSort);
+		List<Sortable> sorts = Arrays.asList(selectionSort, bubbleSort, shakerSort, combSort, insertionSort, shellSort, mergeSort, insMergeSort, quickSort, countingSort, insQuickSort, javaSort, javaParallelSort);
 		List<Sortable> fastSorts = Arrays.asList(combSort, shellSort, mergeSort, insMergeSort, quickSort, insQuickSort, javaSort, javaParallelSort);
 		
 		System.out.println("\nSMALL ARRAY TEST");
 		final int[] smallTestArray = new int[SMALL];
-		ArrayUtility.fillRandom(smallTestArray, 1, SMALL);
-		testSort(sorts, smallTestArray);
+		ArrayUtility.fillRandom(smallTestArray, 1, SMALL);	// generate random #s up to/including value of SMALL.
+		
+		final int[] sortedSmallTA = Arrays.copyOf(smallTestArray, smallTestArray.length);
+		Arrays.parallelSort(sortedSmallTA);
+		
+		testSort(sorts, smallTestArray, sortedSmallTA);
 		
 		System.out.println("\nLARGE ARRAY TEST");
 		final int[] largeTestArray = new int[LARGE];
 		ArrayUtility.fillRandom(largeTestArray, 1, LARGE);
-		testSort(fastSorts, largeTestArray);
+		
+		final int[] sortedLargeTA = Arrays.copyOf(largeTestArray, largeTestArray.length);
+		Arrays.parallelSort(sortedLargeTA);
+		
+		testSort(fastSorts, largeTestArray, sortedLargeTA);
 	}
 
 	private static void testArrayUtility() {
