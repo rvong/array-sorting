@@ -13,16 +13,16 @@ public class InsertionQuickSort extends Sortable {
 	}
 	
 	private void insQuickSort(int lo, int hi) {
-		if ((hi - lo) <= 10) { insertionSort(lo, hi); return;}
+		if ((hi - lo) <= 10) { insertionSort(lo, hi); return; }
+		int pivot = a[(lo + hi)/2];
 		int i = lo, j = hi;
-		int pivot = a[(int) Math.floor((lo + hi) / 2)];
 		while (i <= j) {
-			if (a[i] < pivot) { i++; continue; }
-			if (a[j] > pivot) { j--; continue; }
+			while ( a[i] < pivot) i++; 
+			while (a[j] > pivot) j--;
 			if (i <= j) swap(i++, j--);
 		}
-		if (lo < j) insQuickSort(lo, j);
-		if (i < hi) insQuickSort(i, hi);
+		insQuickSort(lo, j);
+		insQuickSort(i, hi);
 	}
 	
 	private void insertionSort( int lo, int hi) {
